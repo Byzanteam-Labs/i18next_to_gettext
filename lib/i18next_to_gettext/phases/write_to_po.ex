@@ -10,6 +10,9 @@ defmodule I18nextToGettext.Phase.WriteToPo do
       |> Enum.to_list()
       |> Enum.sort(fn {key1, _value1}, {key2, _value2} -> key1 < key2 end)
       |> Enum.map(fn
+        {_key, value} when is_list(value) ->
+          ""
+
         {key, value} ->
           """
           msgid #{Jason.encode!(key)}
