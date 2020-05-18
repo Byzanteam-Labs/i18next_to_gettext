@@ -1,6 +1,6 @@
 # I18nextToGettext
 
-**TODO: Add description**
+Mix task to converte input i18next json file to po file for gettext
 
 ## Installation
 
@@ -19,3 +19,9 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/i18next_to_gettext](https://hexdocs.pm/i18next_to_gettext).
 
+
+## Use
+
+```
+mix i18next_to_gettext.converte input-file output-file
+```
