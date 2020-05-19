@@ -3,16 +3,14 @@ defmodule I18nextToGettext do
   Documentation for I18nextToGettext.
   """
 
-  @doc """
-  Hello world.
+  alias I18nextToGettext.Phase
 
-  ## Examples
-
-      iex> I18nextToGettext.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def run(input_file, output_file) do
+    input_file
+    |> Phase.ReadJsonFiles.run()
+    |> Phase.FlatJson.run()
+    |> Phase.ExtractValues.ReplaceInterpolation.run()
+    |> Phase.ExtractValues.ReplaceNest.run()
+    |> Phase.WriteToPo.run(output_file)
   end
 end
