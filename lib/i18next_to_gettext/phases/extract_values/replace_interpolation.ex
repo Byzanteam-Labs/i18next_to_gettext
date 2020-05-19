@@ -3,17 +3,13 @@ defmodule I18nextToGettext.Phase.ExtractValues.ReplaceInterpolation do
   Replace interpolation format
   `{{a}}` -> `%{a}`
   """
-  @regex ~r/{{\s*[\w\.]+\s*}}/
+  @regex ~r/{{(\s*[\w\.]+\s*)}}/
 
   def run(map) do
     for {key, value} <- map, into: %{} do
       new_value =
         if is_binary(value) do
-          Regex.replace(@regex, value, fn value, _ ->
-            value
-            |> String.replace("{{", "%{")
-            |> String.replace("}}", "}")
-          end)
+          Regex.replace(@regex, value, fn _value, x -> "%{#{x}}" end)
         else
           value
         end

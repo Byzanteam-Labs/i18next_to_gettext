@@ -3,18 +3,13 @@ defmodule I18nextToGettext.Phase.ExtractValues.ReplaceNest do
   Replace nest value
   `$t(keys)` -> `string`
   """
-  @regex ~r/\$t\(\s*[\w\.]+\s*\)/
+  @regex ~r/\$t\((\s*[\w\.]+\s*)\)/
 
   def run(map) do
     for {key, value} <- map, into: %{} do
       new_value =
         if is_binary(value) do
-          Regex.replace(@regex, value, fn value, _ ->
-            nest_key =
-              value
-              |> String.replace("$t(", "")
-              |> String.replace(")", "")
-
+          Regex.replace(@regex, value, fn _value, nest_key ->
             get_nest_value(nest_key, map)
           end)
         else
@@ -31,12 +26,7 @@ defmodule I18nextToGettext.Phase.ExtractValues.ReplaceNest do
         ""
 
       value when is_binary(value) ->
-        Regex.replace(@regex, value, fn value, _ ->
-          nest_key =
-            value
-            |> String.replace("$t(", "")
-            |> String.replace(")", "")
-
+        Regex.replace(@regex, value, fn _, nest_key ->
           get_nest_value(nest_key, map)
         end)
 
