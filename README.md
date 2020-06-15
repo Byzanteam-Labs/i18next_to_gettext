@@ -1,6 +1,6 @@
 # I18nextToGettext
 
-Mix task to converte input i18next json file to po file for gettext
+Mix task to convert input i18next json file to po file for gettext
 
 ## Installation
 
@@ -23,5 +23,5 @@ be found at [https://hexdocs.pm/i18next_to_gettext](https://hexdocs.pm/i18next_t
 ## Use
 
 ```
-mix i18next_to_gettext.converte input-file output-file
+mix i18next_to_gettext.convert input-file output-file
 ```
