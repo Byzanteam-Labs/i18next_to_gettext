@@ -8,6 +8,7 @@ defmodule I18nextToGettext do
   def run(input_file, output_file) do
     input_file
     |> Phase.ReadJsonFile.run()
+    |> Phase.DecodeJsonBinary.run()
     |> Phase.FlatJson.run()
     |> Phase.ExtractValues.ReplaceInterpolation.run()
     |> Phase.ExtractValues.ReplaceNest.run()

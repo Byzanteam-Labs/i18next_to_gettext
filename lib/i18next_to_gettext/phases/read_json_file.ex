@@ -1,10 +1,11 @@
 defmodule I18nextToGettext.Phase.ReadJsonFile do
   @moduledoc """
-  * read json files
+  Get json binary from the file
   """
+
   def run(input_file) do
-    Path.absname(input_file)
+    input_file
+    |> Path.absname()
     |> File.read!()
-    |> Jason.decode!()
   end
 end
