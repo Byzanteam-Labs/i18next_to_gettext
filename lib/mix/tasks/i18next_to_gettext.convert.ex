@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.I18nextToGettext.Converte do
+defmodule Mix.Tasks.I18nextToGettext.Convert do
   use Mix.Task
 
   @shortdoc "Convert i18next json file to gettext po file"
@@ -6,7 +6,7 @@ defmodule Mix.Tasks.I18nextToGettext.Converte do
   @impl true
   def run(args) do
     [input_file, output_file | _] = args
-    I18nextToGettext.run(input_file, output_file)
-    :ok
+
+    :ok = I18nextToGettext.to_po_file(input_file, output_file)
   end
 end
