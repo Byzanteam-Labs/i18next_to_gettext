@@ -1,4 +1,4 @@
-defmodule I18nextToGettext.Phase.ReadJsonFiles do
+defmodule I18nextToGettext.Phase.ReadJsonFile do
   @moduledoc """
   * read json files
   """
